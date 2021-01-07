@@ -6,19 +6,21 @@ import { connect } from "react-redux";
 import Login from "./Login";
 import Home from "./Home";
 import Events from "./Events";
+import Interested from "./Interested";
 
 const App = (props) => {
   return (
     <div>
-      Hello react
+      Hello reac-t
       <Router history={history}>
         <Switch>
           {!props.auth.sign_in ? (
             <Route path="/" exact component={Home} />
           ) : (
-            <Route to="/" exact component={Login} />
+            <Route path="/" exact component={Login} />
           )}
-          <Route to="/events" exact component={Events} />
+          <Route path="/events" exact component={Events} />
+          <Route path="/interested" exact component={Interested} />
         </Switch>
       </Router>
     </div>

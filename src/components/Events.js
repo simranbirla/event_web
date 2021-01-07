@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import addDB from "../utils/addDb";
 
 import Event from "./Event";
 const Events = () => {
@@ -20,14 +21,28 @@ const Events = () => {
       {data
         ? data.map((e) => {
             return (
-              <Event
-                key={e.id}
-                name={e.name}
-                img={e.images[1].url}
-                url={e.url}
-                date={e.dates.start.localDate}
-                img={e.images[1].url}
-              />
+              <>
+                <Event
+                  key={e.id}
+                  name={e.name}
+                  img={e.images[1].url}
+                  url={e.url}
+                  date={e.dates.start.localDate}
+                  img={e.images[1].url}
+                />
+                <button
+                  onClick={() =>
+                    addDB(
+                      e.name,
+                      e.url,
+                      e.images[1].url,
+                      e.dates.start.localDate
+                    )
+                  }
+                >
+                  Interested
+                </button>
+              </>
             );
           })
         : null}
