@@ -12,9 +12,19 @@ const Interested = () => {
     return;
   }, []);
 
+  const check = (date) => {
+    var today = new Date();
+    var parts = date.split("-");
+    var e_date = new Date(parts[0], parts[1] - 1, parts[2]);
+    if (e_date.getTime() > today.getTime()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
   return (
     <div>
-      {console.log(events)}
       {events
         ? events.map((event) => {
             return (
@@ -24,6 +34,7 @@ const Interested = () => {
                   img={event.image}
                   url={event.url}
                   date={event.date}
+                  expired={check(event.date)}
                 />
               </>
             );
