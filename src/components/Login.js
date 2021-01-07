@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-import { provider, auth } from "../firebase";
-//import "../Style/Login.css";
-const Login = () => {
-  const [sign, setSign] = useState(false);
-  const login = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((res) => {
-        setSign(true);
-      })
-      .catch((err) => alert(err));
-  };
+import React from "react";
+import { signIn } from "../redux/actions";
+import { connect } from "react-redux";
 
+//import "../Style/Login.css";
+const Login = (props) => {
   return (
     <div className="login">
       <h2>Login here through google</h2>
 
-      <button onClick={login}>Login</button>
+      <button onClick={props.signIn}>Login</button>
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapStateToProps, { signIn })(Login);

@@ -1,19 +1,30 @@
 import React from "react";
-import Login from "./Login";
 import history from "../history";
 import { Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
-const App = () => {
+import Login from "./Login";
+import Home from "./Home";
+
+const App = (props) => {
   return (
     <div>
       Hello react
       <Router history={history}>
         <Switch>
-          <Route to="/" component={Login} />
+          {!props.auth.sign_in ? (
+            <Route path="/" component={Home} />
+          ) : (
+            <Route to="/" component={Login} />
+          )}
         </Switch>
       </Router>
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapStateToProps)(App);
