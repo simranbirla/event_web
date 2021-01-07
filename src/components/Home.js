@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import HomeComponent from "./HomeComponent";
 
 const Home = () => {
   const [attract, setAttract] = useState([]);
@@ -26,9 +27,33 @@ const Home = () => {
       <h2>Attractions</h2>
       {attract
         ? attract.map((att) => {
-            return <p>{att.name}</p>;
+            return <HomeComponent name={att.name} img={att.images} />;
           })
         : null}
+      <div>
+        <h2>Events</h2>
+        {events
+          ? events.map((att) => {
+              return <HomeComponent name={att.name} img={att.images} />;
+            })
+          : null}
+      </div>
+      <div>
+        <h2>Products</h2>
+        {products
+          ? products.map((att) => {
+              return <HomeComponent name={att.name} img={att.images} />;
+            })
+          : null}
+      </div>
+      <div>
+        <h2>Venues</h2>
+        {venues
+          ? venues.map((att) => {
+              return <HomeComponent name={att.name} img={att.images} />;
+            })
+          : null}
+      </div>
     </div>
   );
 };
