@@ -4,7 +4,7 @@ const HomeComponent = (props) => {
   return (
     <div>
       <h5>{props.name}</h5>
-      {props.img ? (
+      {props.img && props.img[1] ? (
         <img src={props.img[1].url} width="400px" height="400px" />
       ) : null}
     </div>

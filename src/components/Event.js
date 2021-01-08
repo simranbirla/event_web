@@ -12,7 +12,9 @@ const Event = (props) => {
         ) : (
           <p>Expired</p>
         )
-      ) : null}
+      ) : (
+        <p>No</p>
+      )}
     </div>
   );
 };

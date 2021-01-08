@@ -3,14 +3,9 @@ import { db } from "../firebase";
 import Event from "./Event";
 
 const Interested = () => {
-  const [events, setEvents] = useState();
-
-  useEffect(() => {
-    db.collection("events").onSnapshot((snapshot) => {
-      setEvents(snapshot.docs.map((doc) => doc.data()));
-    });
-    return;
-  }, []);
+  const [events, setEvents] = useState("going");
+  const [ex, setEx] = useState([]);
+  const [going, setGoing] = useState([]);
 
   const check = (date) => {
     var today = new Date();
@@ -19,14 +14,34 @@ const Interested = () => {
     if (e_date.getTime() > today.getTime()) {
       return 1;
     } else {
-      return 0;
+      return 2;
     }
   };
 
+  useEffect(() => {
+    db.collection("events").onSnapshot((snapshot) => {
+      snapshot.docs.map((doc) => {
+        var date = doc.data().date;
+        console.log(date);
+        console.log(check(date));
+        if (check(date) === 2) {
+          setEx([...ex, doc.data()]);
+        } else {
+          setGoing([...going, doc.data()]);
+        }
+      });
+    });
+    return;
+  }, []);
+
   return (
     <div>
-      {events
-        ? events.map((event) => {
+      <div>
+        <button onClick={() => setEvents("going")}>Going</button>
+        <button onClick={() => setEvents("expired")}>Expired</button>
+      </div>
+      {events === "going"
+        ? going.map((event) => {
             return (
               <>
                 <Event
@@ -39,7 +54,19 @@ const Interested = () => {
               </>
             );
           })
-        : null}
+        : ex.map((event) => {
+            return (
+              <>
+                <Event
+                  name={event.name}
+                  img={event.image}
+                  url={event.url}
+                  date={event.date}
+                  expired={check(event.date)}
+                />
+              </>
+            );
+          })}
     </div>
   );
 };
