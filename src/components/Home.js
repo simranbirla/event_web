@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomeComponent from "./HomeComponent";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [attract, setAttract] = useState([]);
@@ -24,6 +25,8 @@ const Home = () => {
   return (
     <div>
       HOME
+      <Link to="/events">Events</Link>
+      <Link to="/interested">Intereested</Link>
       <h2>Attractions</h2>
       {attract
         ? attract.map((att) => {

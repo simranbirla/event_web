@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import addDB from "../utils/addDb";
+import { connect } from "react-redux";
 
 import Event from "./Event";
-const Events = () => {
+const Events = (props) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
   useEffect(() => {
@@ -36,7 +37,8 @@ const Events = () => {
                       e.name,
                       e.url,
                       e.images[1].url,
-                      e.dates.start.localDate
+                      e.dates.start.localDate,
+                      props.user.uid
                     )
                   }
                 >
@@ -51,4 +53,9 @@ const Events = () => {
   );
 };
 
-export default Events;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { user: state.auth.user.user };
+};
+
+export default connect(mapStateToProps)(Events);

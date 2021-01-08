@@ -11,10 +11,9 @@ import Interested from "./Interested";
 const App = (props) => {
   return (
     <div>
-      Hello reac-t
       <Router history={history}>
         <Switch>
-          {!props.auth.sign_in ? (
+          {props.auth.sign_in ? (
             <Route path="/" exact component={Home} />
           ) : (
             <Route path="/" exact component={Login} />
@@ -28,6 +27,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return { auth: state.auth };
 };
 
