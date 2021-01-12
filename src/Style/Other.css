@@ -1,0 +1,22 @@
+.other {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.other_element {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.other button {
+  padding: 10px 30px;
+  background-color: #65eb53;
+  border: none;
+  width: 50%;
+  margin: 1em auto;
+  cursor: pointer;
+  font-weight: bolder;
+}

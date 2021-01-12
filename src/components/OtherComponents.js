@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import Event from "./Event";
+import "../Style/Other.css";
 const OtherComponents = (props) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
@@ -17,24 +18,26 @@ const OtherComponents = (props) => {
   }, [page]);
 
   return (
-    <div>
-      {data
-        ? data.map((e) => {
-            if (e.images) {
-              return (
-                <>
-                  <Event
-                    key={e.id}
-                    name={e.name}
-                    img={e.images[0].url}
-                    url={e.url}
-                  />
-                </>
-              );
-            }
-          })
-        : null}
-      <button onClick={() => setPage(page + 1)}>More</button>
+    <div className="other">
+      <div className="other_element">
+        {data
+          ? data.map((e) => {
+              if (e.images) {
+                return (
+                  <>
+                    <Event
+                      key={e.id}
+                      name={e.name}
+                      img={e.images[0].url}
+                      url={e.url}
+                    />
+                  </>
+                );
+              }
+            })
+          : null}
+      </div>
+      <button onClick={() => setPage(page + 1)}> More >>> </button>
     </div>
   );
 };
