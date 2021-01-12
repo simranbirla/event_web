@@ -24,15 +24,13 @@ const Home = () => {
 
   return (
     <div>
-      HOME
-      <Link to="/events">Events</Link>
-      <Link to="/interested">Intereested</Link>
       <h2>Attractions</h2>
       {attract
         ? attract.map((att) => {
             return <HomeComponent name={att.name} img={att.images} />;
           })
         : null}
+      <Link to="/attractions">More</Link>
       <div>
         <h2>Events</h2>
         {events
@@ -40,6 +38,7 @@ const Home = () => {
               return <HomeComponent name={att.name} img={att.images} />;
             })
           : null}
+        <Link to="/find/events">More</Link>
       </div>
       <div>
         <h2>Products</h2>
@@ -48,6 +47,7 @@ const Home = () => {
               return <HomeComponent name={att.name} img={att.images} />;
             })
           : null}
+        <Link to="/products">More</Link>
       </div>
       <div>
         <h2>Venues</h2>
@@ -56,6 +56,7 @@ const Home = () => {
               return <HomeComponent name={att.name} img={att.images} />;
             })
           : null}
+        <Link to="/venues">More</Link>
       </div>
     </div>
   );

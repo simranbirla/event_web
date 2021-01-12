@@ -7,19 +7,23 @@ import Login from "./Login";
 import Home from "./Home";
 import Events from "./Events";
 import Interested from "./Interested";
+import OtherComponents from "./OtherComponents";
+import Header from "./Header";
 
 const App = (props) => {
   return (
     <div>
       <Router history={history}>
+        <Header />
         <Switch>
           {props.auth.sign_in ? (
             <Route path="/" exact component={Home} />
           ) : (
             <Route path="/" exact component={Login} />
           )}
-          <Route path="/events" exact component={Events} />
-          <Route path="/interested" exact component={Interested} />
+          <Route path="/find/events" exact component={Events} />
+          <Route path="/find/interested" exact component={Interested} />
+          <Route path="/:id" exact component={OtherComponents} />
         </Switch>
       </Router>
     </div>

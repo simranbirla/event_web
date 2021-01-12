@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Event from "./Event";
+import { connect } from "react-redux";
 
-const Interested = () => {
+const Interested = (props) => {
   const [events, setEvents] = useState("going");
   const [ex, setEx] = useState([]);
   const [going, setGoing] = useState([]);
@@ -19,7 +20,7 @@ const Interested = () => {
   };
 
   useEffect(() => {
-    db.collection("events").onSnapshot((snapshot) => {
+    db.collection(`events/${props.user.uid}/event`).onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
         var date = doc.data().date;
         console.log(date);
@@ -40,6 +41,7 @@ const Interested = () => {
         <button onClick={() => setEvents("going")}>Going</button>
         <button onClick={() => setEvents("expired")}>Expired</button>
       </div>
+      {console.log(going)}
       {events === "going"
         ? going.map((event) => {
             return (
@@ -71,4 +73,9 @@ const Interested = () => {
   );
 };
 
-export default Interested;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { user: state.auth.user.user };
+};
+
+export default connect(mapStateToProps)(Interested);
