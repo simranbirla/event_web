@@ -1,4 +1,5 @@
 import React from "react";
+import "../Style/Event.css";
 
 const Event = (props) => {
   return (

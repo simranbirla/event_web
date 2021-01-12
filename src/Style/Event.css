@@ -1,0 +1,27 @@
+.event {
+  display: flex;
+  flex-direction: column;
+}
+
+.event h4 {
+  font-size: 1.5em;
+  margin: 10px;
+}
+
+.event a {
+  color: #65eb53;
+  margin: 10px;
+  transition: all 0.09s ease-in;
+}
+
+.event a:hover {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.event h5 {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 10px;
+}
