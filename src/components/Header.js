@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "../redux/actions";
+import "../Style/Header.css";
 
 const Header = ({ auth, signIn }) => {
   return (
     <div className="header">
       <input type="checkbox" id="check" />
       <label for="check" className="label"></label>
-      <Link to="/">Home</Link>
+      <Link to="/" className="first">
+        Home
+      </Link>
       <Link to="/find/interested">Interested</Link>
       <Link to="/find/events">Events</Link>
       {auth.sign_in ? (

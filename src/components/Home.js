@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HomeComponent from "./HomeComponent";
 import { Link } from "react-router-dom";
-
+import "../Style/Home.css";
 const Home = () => {
   const [attract, setAttract] = useState([]);
   const [events, setEvents] = useState([]);
@@ -23,39 +23,49 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Attractions</h2>
-      {attract
-        ? attract.map((att) => {
-            return <HomeComponent name={att.name} img={att.images} />;
-          })
-        : null}
-      <Link to="/attractions">More</Link>
-      <div>
+    <div className="home">
+      <div className="home_element">
+        <h2>Attractions</h2>
+        <div className="home_component">
+          {attract
+            ? attract.map((att) => {
+                return <HomeComponent name={att.name} img={att.images} />;
+              })
+            : null}
+        </div>
+        <Link to="/attractions">More</Link>
+      </div>
+      <div className="home_element">
         <h2>Events</h2>
-        {events
-          ? events.map((att) => {
-              return <HomeComponent name={att.name} img={att.images} />;
-            })
-          : null}
+        <div className="home_component">
+          {events
+            ? events.map((att) => {
+                return <HomeComponent name={att.name} img={att.images} />;
+              })
+            : null}
+        </div>
         <Link to="/find/events">More</Link>
       </div>
-      <div>
+      <div className="home_element">
         <h2>Products</h2>
-        {products
-          ? products.map((att) => {
-              return <HomeComponent name={att.name} img={att.images} />;
-            })
-          : null}
+        <div className="home_component">
+          {products
+            ? products.map((att) => {
+                return <HomeComponent name={att.name} img={att.images} />;
+              })
+            : null}
+        </div>
         <Link to="/products">More</Link>
       </div>
-      <div>
+      <div className="home_element">
         <h2>Venues</h2>
-        {venues
-          ? venues.map((att) => {
-              return <HomeComponent name={att.name} img={att.images} />;
-            })
-          : null}
+        <div className="home_component">
+          {venues
+            ? venues.map((att) => {
+                return <HomeComponent name={att.name} img={att.images} />;
+              })
+            : null}
+        </div>
         <Link to="/venues">More</Link>
       </div>
     </div>

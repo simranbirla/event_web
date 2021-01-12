@@ -1,0 +1,43 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  margin: 1em;
+}
+
+.home_element {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px gray solid;
+}
+
+.home_element h2 {
+  color: #205717;
+}
+
+.home_component {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 1em;
+  padding: 1em;
+}
+
+.home_component h5 {
+  font-size: 1.3em;
+}
+
+.home_element a {
+  background-color: #65eb4d;
+  padding: 1em;
+  width: 50%;
+  margin: 10px auto;
+  text-decoration: none;
+  color: #205717;
+  font-size: 20px;
+  font-weight: bolder;
+}

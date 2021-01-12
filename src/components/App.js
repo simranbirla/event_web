@@ -9,6 +9,7 @@ import Events from "./Events";
 import Interested from "./Interested";
 import OtherComponents from "./OtherComponents";
 import Header from "./Header";
+import "../Style/index.css";
 
 const App = (props) => {
   return (
