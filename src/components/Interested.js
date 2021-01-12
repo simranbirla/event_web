@@ -53,6 +53,7 @@ const Interested = (props) => {
                   date={event.date}
                   expired={check(event.date)}
                 />
+                <a href={event.url}>Buy Tickets</a>
               </>
             );
           })

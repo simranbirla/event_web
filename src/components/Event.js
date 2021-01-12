@@ -12,9 +12,10 @@ const Event = (props) => {
         ) : (
           <p>Expired</p>
         )
-      ) : (
-        <p>No</p>
-      )}
+      ) : null}
+      <a href={props.url} target="_blank">
+        Details
+      </a>
     </div>
   );
 };
