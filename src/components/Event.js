@@ -6,7 +6,7 @@ const Event = (props) => {
     <div className="event">
       <h4> {props.name}</h4>
       <h5> {props.date} </h5>
-      <img src={props.img} width="400px" height="400px" />
+      <img src={props.img} alt={props.name} />
       {props.expired ? (
         props.expired === 1 ? (
           <p>Going on</p>

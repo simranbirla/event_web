@@ -14,8 +14,16 @@
   border-bottom: 2px gray solid;
 }
 
-.home_element h2 {
-  color: #205717;
+.home_element a {
+  color: #65eb4d;
+  font-size: 1.4em;
+  text-decoration: none;
+  transition: all 0.15s ease-in;
+}
+
+.home_element a:hover {
+  color: #147a04;
+  text-shadow: 1px solid green;
 }
 
 .home_component {
@@ -31,7 +39,7 @@
   font-size: 1.3em;
 }
 
-.home_element .more {
+.home_element . {
   background-color: #65eb4d;
   padding: 1em;
   width: 50%;

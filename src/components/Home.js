@@ -25,7 +25,9 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home_element">
-        <h2>Attractions</h2>
+        <Link className="more" to="/attractions">
+          <h2>Attractions</h2>
+        </Link>{" "}
         <div className="home_component">
           {attract
             ? attract.map((att) => {
@@ -39,12 +41,11 @@ const Home = () => {
               })
             : null}
         </div>
-        <Link className="more" to="/attractions">
-          More
-        </Link>
       </div>
       <div className="home_element">
-        <h2>Events</h2>
+        <Link className="more" to="/find/events">
+          <h2>Events</h2>
+        </Link>{" "}
         <div className="home_component">
           {events
             ? events.map((att) => {
@@ -58,12 +59,11 @@ const Home = () => {
               })
             : null}
         </div>
-        <Link className="more" to="/find/events">
-          More
-        </Link>
       </div>
       <div className="home_element">
-        <h2>Products</h2>
+        <Link className="more" to="/products">
+          <h2>Products</h2>
+        </Link>{" "}
         <div className="home_component">
           {products
             ? products.map((att) => {
@@ -77,12 +77,11 @@ const Home = () => {
               })
             : null}
         </div>
-        <Link className="more" to="/products">
-          More
-        </Link>
       </div>
       <div className="home_element">
-        <h2>Venues</h2>
+        <Link className="more" to="/venues">
+          <h2>Venues</h2>
+        </Link>{" "}
         <div className="home_component">
           {venues
             ? venues.map((att) => {
@@ -96,9 +95,7 @@ const Home = () => {
               })
             : null}
         </div>
-        <Link className="more" to="/venues">
-          More
-        </Link>
+        M{" "}
       </div>
     </div>
   );

@@ -1,0 +1,33 @@
+.events {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.events_element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.events_element .interested {
+  width: 50%;
+  padding: 10px 30px;
+  background-color: #205717;
+  margin: 10px auto;
+  border: none;
+  color: #65eb53;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.events_element .interested:hover {
+  background-color: #65eb53;
+  color: #205717;
+}
+.events_element img {
+  margin: auto;
+  text-align: center;
+}

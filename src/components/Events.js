@@ -3,6 +3,8 @@ import addDB from "../utils/addDb";
 import { connect } from "react-redux";
 
 import Event from "./Event";
+import "../Style/Events.css";
+
 const Events = (props) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
@@ -18,36 +20,39 @@ const Events = (props) => {
   }, [page]);
 
   return (
-    <div>
-      {data
-        ? data.map((e) => {
-            return (
-              <>
-                <Event
-                  key={e.id}
-                  name={e.name}
-                  img={e.images[1].url}
-                  url={e.url}
-                  date={e.dates.start.localDate}
-                  img={e.images[1].url}
-                />
-                <button
-                  onClick={() =>
-                    addDB(
-                      e.name,
-                      e.url,
-                      e.images[1].url,
-                      e.dates.start.localDate,
-                      props.user.uid
-                    )
-                  }
-                >
-                  Interested
-                </button>
-              </>
-            );
-          })
-        : null}
+    <div className="events">
+      <div className="events_element">
+        {data
+          ? data.map((e) => {
+              return (
+                <>
+                  <Event
+                    key={e.id}
+                    name={e.name}
+                    img={e.images[1].url}
+                    url={e.url}
+                    date={e.dates.start.localDate}
+                    img={e.images[1].url}
+                  />
+                  <button
+                    onClick={() =>
+                      addDB(
+                        e.name,
+                        e.url,
+                        e.images[1].url,
+                        e.dates.start.localDate,
+                        props.user.uid
+                      )
+                    }
+                    className="interested"
+                  >
+                    Interested
+                  </button>
+                </>
+              );
+            })
+          : null}
+      </div>
       <button onClick={() => setPage(page + 1)}>More</button>
     </div>
   );

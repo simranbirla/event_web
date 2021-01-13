@@ -1,6 +1,15 @@
 .event {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  position: relative;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.event img {
+  width: 400px;
+  height: 400px;
+  padding: 1em;
 }
 
 .event h4 {
@@ -24,4 +33,12 @@
   font-size: 1.2em;
   text-align: center;
   margin: 10px;
+  color: rgb(179, 7, 179);
+}
+
+@media (max-width: 450px) {
+  .event img {
+    width: 300px;
+    height: 300px;
+  }
 }
