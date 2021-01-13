@@ -95,7 +95,6 @@ const Home = () => {
               })
             : null}
         </div>
-        M{" "}
       </div>
     </div>
   );

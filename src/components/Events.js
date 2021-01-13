@@ -21,11 +21,11 @@ const Events = (props) => {
 
   return (
     <div className="events">
-      <div className="events_element">
+      <div className="events_elements">
         {data
           ? data.map((e) => {
               return (
-                <>
+                <div className="events_element">
                   <Event
                     key={e.id}
                     name={e.name}
@@ -46,9 +46,9 @@ const Events = (props) => {
                     }
                     className="interested"
                   >
-                    Interested
+                    +
                   </button>
-                </>
+                </div>
               );
             })
           : null}

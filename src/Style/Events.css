@@ -4,29 +4,53 @@
   justify-content: center;
 }
 
+.events_elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
 .events_element {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 .events_element .interested {
-  width: 50%;
-  padding: 10px 30px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 10px;
   background-color: #205717;
   margin: 10px auto;
   border: none;
   color: #65eb53;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   transition: all 0.25s ease;
+  position: absolute;
+  border-radius: 50%;
+  right: 20px;
+  top: 120px;
 }
 
 .events_element .interested:hover {
   background-color: #65eb53;
   color: #205717;
 }
+
+.events_element .interested:hover::before {
+  content: "Interested";
+  font-size: 15px;
+  position: absolute;
+  top: -15px;
+  left: -8px;
+  padding: 5px;
+}
+
 .events_element img {
   margin: auto;
   text-align: center;
