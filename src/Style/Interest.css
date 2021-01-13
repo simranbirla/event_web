@@ -32,7 +32,6 @@
   margin: 1em;
   gap: 30px;
 }
-
 .going_event {
   position: relative;
 }
@@ -46,6 +45,10 @@
   font-weight: 800;
   position: absolute;
   top: 460px;
+}
+
+.expire {
+  position: relative;
 }
 
 .event.expired::before {

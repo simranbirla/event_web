@@ -53,7 +53,9 @@ const Events = (props) => {
             })
           : null}
       </div>
-      <button onClick={() => setPage(page + 1)}>More</button>
+      <button onClick={() => setPage(page + 1)} className="more-btn">
+        More
+      </button>
     </div>
   );
 };

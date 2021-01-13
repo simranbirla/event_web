@@ -21,33 +21,40 @@ const Interested = (props) => {
   };
 
   useEffect(() => {
-    db.collection(`events/${props.user.uid}/event`).onSnapshot((snapshot) => {
-      snapshot.docs.map((doc) => {
-        var date = doc.data().date;
-        if (check(date) === 2) {
-          setEx([...ex, { data: doc.data(), id: doc.id }]);
-        } else {
-          setGoing([...going, { data: doc.data(), id: doc.id }]);
-        }
+    db.collection(`events/${props.user.uid}/event`)
+      .get()
+      .then((shot) => {
+        shot.docs.map((doc) => {
+          var date = doc.data().date;
+          if (check(date) === 2) {
+            setEx((ex) => [...ex, ...[{ data: doc.data(), id: doc.id }]]);
+          } else {
+            setGoing((going) => [
+              ...going,
+              ...[{ data: doc.data(), id: doc.id }],
+            ]);
+          }
+        });
       });
-    });
-    return () => {
-      setEx();
-      setGoing();
-    };
+    return;
   }, []);
 
   const deleteEvent = (id) => {
-    db.doc(`events/${props.user.uid}/event/${id}`)
+    db.collection(`events/${props.user.uid}/event/`)
+      .doc(id)
       .delete()
       .then(() => {
+        const new_going = going.filter((item) => item.id !== id);
+        setGoing(new_going);
+        const new_ex = ex.filter((item) => item.id !== id);
+        setEx(new_ex);
         alert("Event deleted!!");
-      });
+      })
+      .catch((err) => alert(err));
   };
 
   return (
     <div className="interested">
-      {console.log(going)}
       <div className="buttons">
         <button onClick={() => setEvents("going")}>Going</button>
         <button className="ex" onClick={() => setEvents("expired")}>
@@ -80,7 +87,7 @@ const Interested = (props) => {
             })
           : ex.map((event) => {
               return (
-                <div className="expired">
+                <div className="expire">
                   <Event
                     name={event.data.name}
                     img={event.data.image}
@@ -88,7 +95,6 @@ const Interested = (props) => {
                     date={event.data.date}
                     expired={check(event.data.date)}
                   />
-
                   <button
                     className="delete"
                     onClick={() => deleteEvent(event.id)}

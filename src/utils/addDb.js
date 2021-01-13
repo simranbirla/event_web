@@ -7,6 +7,7 @@ const addDB = (name, url, image, date, userId) => {
     image,
     date,
   });
+  alert("Added the Event");
 };
 
 export default addDB;
