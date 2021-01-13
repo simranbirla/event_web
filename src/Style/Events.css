@@ -18,11 +18,9 @@
   position: relative;
 }
 
-.events_element .interested {
+.events_element .interested-btn {
   width: 50px;
   height: 50px;
-  text-align: center;
-  line-height: 10px;
   background-color: #205717;
   margin: 10px auto;
   border: none;
@@ -35,14 +33,16 @@
   border-radius: 50%;
   right: 20px;
   top: 120px;
+  text-align: center;
+  line-height: 10px;
 }
 
-.events_element .interested:hover {
+.events_element .interested-btn:hover {
   background-color: #65eb53;
   color: #205717;
 }
 
-.events_element .interested:hover::before {
+.events_element .interested-btn:hover::before {
   content: "Interested";
   font-size: 15px;
   position: absolute;
@@ -54,4 +54,12 @@
 .events_element img {
   margin: auto;
   text-align: center;
+}
+
+@media (max-width: 300px) {
+  .events_element .interested-btn {
+    width: 40px;
+    height: 40px;
+    top: 150px;
+  }
 }

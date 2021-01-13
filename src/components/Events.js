@@ -44,7 +44,7 @@ const Events = (props) => {
                         props.user.uid
                       )
                     }
-                    className="interested"
+                    className="interested-btn"
                   >
                     +
                   </button>
