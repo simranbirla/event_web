@@ -3,7 +3,6 @@
   flex-direction: column;
   text-align: center;
   width: 100%;
-  margin: 1em;
 }
 
 .home_element {
@@ -39,13 +38,21 @@
   font-size: 1.3em;
 }
 
-.home_element . {
-  background-color: #65eb4d;
-  padding: 1em;
-  width: 50%;
-  margin: 10px auto;
-  text-decoration: none;
-  color: #205717;
-  font-size: 20px;
-  font-weight: bolder;
+.home_container img {
+  width: 400px;
+  height: 400px;
+}
+
+@media (max-width: 450px) {
+  .home_container img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 300px) {
+  .home_container img {
+    width: 250px;
+    height: 250px;
+  }
 }

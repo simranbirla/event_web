@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Event from "./Event";
 import { connect } from "react-redux";
-
+import "../Style/Interest.css";
 const Interested = (props) => {
   const [events, setEvents] = useState("going");
   const [ex, setEx] = useState([]);
@@ -36,46 +36,50 @@ const Interested = (props) => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className="interested">
+      <div className="buttons">
         <button onClick={() => setEvents("going")}>Going</button>
-        <button onClick={() => setEvents("expired")}>Expired</button>
+        <button className="ex" onClick={() => setEvents("expired")}>
+          Expired
+        </button>
       </div>
-      {console.log(going)}
-      {events === "going"
-        ? going.map((event) => {
-            return (
-              <>
-                <Event
-                  name={event.name}
-                  img={event.image}
-                  url={event.url}
-                  date={event.date}
-                  expired={check(event.date)}
-                />
-                <a href={event.url}>Buy Tickets</a>
-              </>
-            );
-          })
-        : ex.map((event) => {
-            return (
-              <>
-                <Event
-                  name={event.name}
-                  img={event.image}
-                  url={event.url}
-                  date={event.date}
-                  expired={check(event.date)}
-                />
-              </>
-            );
-          })}
+      <div className="interested_event">
+        {events === "going"
+          ? going.map((event) => {
+              return (
+                <div className="going_event">
+                  <Event
+                    name={event.name}
+                    img={event.image}
+                    url={event.url}
+                    date={event.date}
+                    expired={check(event.date)}
+                  />
+                  <a className="buy" target="_blank" href={event.url}>
+                    Buy Tickets
+                  </a>
+                </div>
+              );
+            })
+          : ex.map((event) => {
+              return (
+                <div className="expired">
+                  <Event
+                    name={event.name}
+                    img={event.image}
+                    url={event.url}
+                    date={event.date}
+                    expired={check(event.date)}
+                  />
+                </div>
+              );
+            })}
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { user: state.auth.user.user };
 };
 
