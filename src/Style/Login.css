@@ -12,7 +12,7 @@ img {
 }
 
 .login_page button {
-  width: 80%;
+  width: 50%;
   margin: auto;
   padding: 10px 30px;
   background-color: lawngreen;
@@ -32,6 +32,10 @@ img {
 @media (max-width: 520px) {
   img {
     width: 300px;
+  }
+
+  .login_page button {
+    width: 80%;
   }
 }
 
