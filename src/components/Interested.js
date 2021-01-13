@@ -3,6 +3,7 @@ import { db } from "../firebase";
 import Event from "./Event";
 import { connect } from "react-redux";
 import "../Style/Interest.css";
+
 const Interested = (props) => {
   const [events, setEvents] = useState("going");
   const [ex, setEx] = useState([]);
@@ -23,20 +24,30 @@ const Interested = (props) => {
     db.collection(`events/${props.user.uid}/event`).onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
         var date = doc.data().date;
-        console.log(date);
-        console.log(check(date));
         if (check(date) === 2) {
-          setEx([...ex, doc.data()]);
+          setEx([...ex, { data: doc.data(), id: doc.id }]);
         } else {
-          setGoing([...going, doc.data()]);
+          setGoing([...going, { data: doc.data(), id: doc.id }]);
         }
       });
     });
-    return;
+    return () => {
+      setEx();
+      setGoing();
+    };
   }, []);
+
+  const deleteEvent = (id) => {
+    db.doc(`events/${props.user.uid}/event/${id}`)
+      .delete()
+      .then(() => {
+        alert("Event deleted!!");
+      });
+  };
 
   return (
     <div className="interested">
+      {console.log(going)}
       <div className="buttons">
         <button onClick={() => setEvents("going")}>Going</button>
         <button className="ex" onClick={() => setEvents("expired")}>
@@ -49,15 +60,21 @@ const Interested = (props) => {
               return (
                 <div className="going_event">
                   <Event
-                    name={event.name}
-                    img={event.image}
-                    url={event.url}
-                    date={event.date}
-                    expired={check(event.date)}
+                    name={event.data.name}
+                    img={event.data.image}
+                    url={event.data.url}
+                    date={event.data.date}
+                    expired={check(event.data.date)}
                   />
                   <a className="buy" target="_blank" href={event.url}>
                     Buy Tickets
                   </a>
+                  <button
+                    className="delete"
+                    onClick={() => deleteEvent(event.id)}
+                  >
+                    X
+                  </button>
                 </div>
               );
             })
@@ -65,12 +82,19 @@ const Interested = (props) => {
               return (
                 <div className="expired">
                   <Event
-                    name={event.name}
-                    img={event.image}
-                    url={event.url}
-                    date={event.date}
-                    expired={check(event.date)}
+                    name={event.data.name}
+                    img={event.data.image}
+                    url={event.data.url}
+                    date={event.data.date}
+                    expired={check(event.data.date)}
                   />
+
+                  <button
+                    className="delete"
+                    onClick={() => deleteEvent(event.id)}
+                  >
+                    X
+                  </button>
                 </div>
               );
             })}
